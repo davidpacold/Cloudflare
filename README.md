@@ -14,7 +14,7 @@
 
  ### How to Access my application
 
- Please note, the services are running on my local MacBook, meaning, it will need to be awake and online when you attempt to reach the services. If you have issues let me know and I will ensure it is online in a windows for you to review.
+ Please note, the services are running on my local MacBook, meaning, it will need to be awake and online when you attempt to reach the services. If you have issues let me know and I will ensure it is online in a specific time window for you to review.
 
  I have published 3 URLs to access the application.
 
