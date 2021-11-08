@@ -1,24 +1,37 @@
-# Cloudflare
-Cloudflare Workers project
+# Cloudflare Homework Report
 
-Deliverables:
-1. A working application:
-a. "Working" means that the site is reachable over an Argo Tunnel, and successfully
-returns all HTTP request headers in the body of the response. 
+## My Cloudflare  project
 
-b. A running Cloudflare Worker that achieves the specified logic. - Completed with the check for the cookie - the worker code is posted in the GitHub
+### Overview and Deliverables 
+> Deliverables:
+> 1. A working application:
+> a. "Working" means that the site is reachable over an Argo Tunnel, and successfully
+> returns all HTTP request headers in the body of the response. 
+> b. A running Cloudflare Worker that achieves the specified logic. 
+> c. Any instructions needed to access any of the above.
+ 
+ ### How to Access my application 
 
-c. Any instructions needed to access any of the above.
-  The service can be accessed via several methods;
-  directly -  nocfpoc.davidpacold.comanything?<Key>=<Value> 
-  via Cloudflare network - poc.davidpacold.app/anything?<Key>=<Value>
-  via a Cloudflare tunnel - argoapp.davidpacold.app/anything?<Key>=<Value>
-Secure website accessible at poc.davidpacold.app/admin
-    Username / Password: Admin/Admin
+ Please note, the services are running on my local MacBook, meaning, it will need to be awake and online when you attempt to reach the services. If you have issues let me know and I will ensure it is online in a windows for you to review. 
+
+ I have published 3 URLs to access the application. 
+  
+```nocfpoc.davidpacold.com/anything?<AnyKey>=<AnyValue>```
+This URL provides a direct route to my service bypassing the Cloudflare Platform
+
+```poc.davidpacold.app/anything?<Key>=<Value>```
+This URL provides a route to my service leveraging the Cloudflare Platform
+
+```argoapp.davidpacold.app/anything?<Key>=<Value>```
+This URL provides a route to my service leveraging the Cloudflare Platform and the Tunnel Services
+
+```poc.davidpacold.app/admin``` and ```poc.davidpacold.app/logout```
+This URL provides a route to my Authenticated endpoint service leveraging the Cloudflare Platform
+    Username / Password: admin/admin
 
 
-2. A report that addresses the following:
-● A summary detailing how you implemented the technical requirements.  
+> 2. A report that addresses the following:
+> A summary detailing how you implemented the technical requirements.  
 
 ```
                                                                                            
