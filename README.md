@@ -31,6 +31,7 @@ This URL provides a route to my service leveraging the Cloudflare Platform and t
 This URL provides a route to my Authenticated endpoint service leveraging the Cloudflare Platform
     Username / Password: admin/admin
 
+### My solution
 
 > 2. A report that addresses the following:
 > A summary detailing how you implemented the technical requirements.  
