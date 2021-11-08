@@ -1,0 +1,36 @@
+addEventListener("fetch", event => {
+    event.respondWith(handleRequest(event.request))
+  })
+
+  async function handleRequest(request) {
+      const OptionalCookie = "cf-noredir";
+      const redirectLocation = "developers.cloudflare.com/workers/about";
+      const newlocation = "https://"+redirectLocation;
+      
+
+      const Redirect_Response = Response.redirect(newlocation, 302); 
+      const Passthrough_Respose = fetch(request); 
+      const cookie = request.headers.get("cookie");
+      const userAgent = request.headers.get("User-Agent") || "";
+
+
+     if (userAgent.includes("bot")) {
+       return new Response("Block User Agent containing bot", { status: 403 });
+     }
+     else if (userAgent.includes("PostmanRuntime/7.28.4")) {
+      if (cookie && cookie.includes(`${OptionalCookie}=true`)) {
+        return Passthrough_Respose;
+        }
+        return new Response("Block User Agent containing Postman", { status: 403 });
+      }
+     else if (userAgent.includes("Mozilla/5.0")) {
+      return Passthrough_Respose;
+      }    
+    else if (userAgent.includes("curl")) {
+            if (cookie && cookie.includes(`${OptionalCookie}=true`)) {
+            return Passthrough_Respose;
+            }
+        return Redirect_Response;
+    }
+      return Redirect_Response;
+    };
