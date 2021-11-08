@@ -19,7 +19,8 @@ Secure website accessible at poc.davidpacold.app/admin
 
 2. A report that addresses the following:
 ● A summary detailing how you implemented the technical requirements.  
-                                                              
+
+```
                                                                                            
 +-----------+                                                 +---------------------------+
 | Google    |                                                 |macOS Host                 |
@@ -45,7 +46,7 @@ Secure website accessible at poc.davidpacold.app/admin
 |            |                                                       |                     
 |            |-------------------------------------------------------+                     
 +------------+                                                                             
-
+```
 
 The diagram above is meant to illustrate the solution I have implemented in a logical and easy to consume manner - not necessary reflecting the ports / protocols / connection orders etc, but to show the technical stack and the relationships between the different components. 
 
@@ -155,6 +156,7 @@ Yes - In fact due to the same endpoint being accessible in 2 ways, over the Clou
 
 
 Here is an example of the Cloudflare fronted response:
+```
 {
   "args": {
     "name": "david"
@@ -189,8 +191,9 @@ Here is an example of the Cloudflare fronted response:
   "origin": "71.199.128.136", 
   "url": "https://poc.davidpacold.app/anything?name=david"
 }
-
+```
 And here is an example of the direct access response:
+```
 {
   "args": {
     "Name": "David"
@@ -218,9 +221,10 @@ And here is an example of the direct access response:
   "origin": "172.16.179.1", 
   "url": "http://nocfpoc.davidpacold.com/anything?Name=David"
 }
-
+```
 
 By compairing the two responses we can identify the different headers are:
+```
     "Cdn-Loop": "cloudflare; subreqs=1", 
     "Cf-Connecting-Ip": "71.199.128.136", 
     "Cf-Ew-Via": "15", 
@@ -230,7 +234,7 @@ By compairing the two responses we can identify the different headers are:
     "Cf-Worker": "davidpacold.app", 
     "origin": "172.16.179.1" (when going direct)
     "origin": "71.199.128.136" (when going over the CF network route)
-
+```
 
 ● How do you imagine that a target customer will find this experience?
 
