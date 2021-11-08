@@ -66,23 +66,23 @@ This URL provides a route to my Authenticated endpoint service leveraging the Cl
 The diagram above is meant to illustrate the solution I have implemented in a logical and easy to consume manner - not necessary reflecting the ports / protocols / connection orders etc, but to show the technical stack and the relationships between the different components.
 
 The httpbin web service is accessible via 3 world accessible endpoints
-
+```
 nocfpoc.davidpacold.com
 poc.davidpacold.app
 argoapp.davidpacold.app
-
-First the endpoint nocfpoc.davidpacold.com has a DNS entry hosted as part of the domain registration hosted by Google.
+```
+First the endpoint `nocfpoc.davidpacold.com` has a DNS entry hosted as part of the domain registration hosted by Google.
 This DNS entry points to the IP address of my home router, where I have configured port 80 and 443 to forward onto my MacBook Pro. This connection is accepted by the HA Proxy service where the connection is forwarded from port 80 to port 8080 that the web service is actually listening on.
 
 This connection flow will bypass the Cloudflare network and allow us to experiment with and understand the different headers that are included in the request made over the Cloudflare network based connections which we will explore later on.
 
 A trace route of this domain confirms that my traffic stays within my ISP network.
 
-The endpoint poc.davidpacold.app has the domain registered and hosted by Google as well, but domain configuration in Google has delegated the Name Servers to Cloudflare. In the Cloudflare network I have configured an A record that points to the IP address of my home router.
+The endpoint `poc.davidpacold.app` has the domain registered and hosted by Google as well, but domain configuration in Google has delegated the Name Servers to Cloudflare. In the Cloudflare network I have configured an A record that points to the IP address of my home router.
 
 A trace route of this domain confirms that my traffic now flows into the Cloudflare Network.
 
-Finally the endpoint argoapp.davidpacold.app has a similar configuration where the domain is registered and hosted by Google, but the domain configuration for davidpacold.app has delegated the Name Servers to Cloudflare. For the argoapp host, rather than an A record being configured, I have configured a CNAME record that points to a host in the cfargotunnel.com domain.
+Finally the endpoint `argoapp.davidpacold.app` has a similar configuration where the domain is registered and hosted by Google, but the domain configuration for davidpacold.app has delegated the Name Servers to Cloudflare. For the argoapp host, rather than an A record being configured, I have configured a CNAME record that points to a host in the cfargotunnel.com domain.
 
 The host in the cfargotunnel.com domain is the service endpoint that the argo tunnel service running on my Macbook is made world accessible from. So by navigating to argoapp.davidpacold.app the request is translated and passed to the Cloudflare Tunnel Service, where is then sent over the established tunnel to my macbook.
 
